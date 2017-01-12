@@ -1,4 +1,17 @@
-(function( $, ko ) {
+(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(['jquery', 'knockout'], factory);
+	} else if (typeof module === "object") {
+		// CommonJS module
+		var ko = require('knockout'),
+			$ = require('jquery');
+		factory($, ko);
+	} else {
+		// Browser globals
+		factory($, window.ko);
+	}
+}(function( $, ko ) {
 
 	var binding = {
 
@@ -112,4 +125,4 @@
 	// Export the binding
 	ko.bindingHandlers['wysiwyg'] = binding;
 
-})( jQuery, ko );
+}));
